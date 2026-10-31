@@ -41,7 +41,8 @@ if DATABASE_URL.startswith("sqlite"):
 engine = create_engine(DATABASE_URL, **engine_options)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
-pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
+#pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd = CryptContext(schemes=["bcrypt"], bcrypt__truncate_error=False, deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 class User(Base):
