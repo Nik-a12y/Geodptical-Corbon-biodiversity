@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Darukaa.Earth - Full Stack Starter
 
 A runnable starter implementation for the Darukaa.Earth hackathon:
@@ -69,3 +70,7 @@ CREATE DATABASE darukaa;
 \c darukaa
 CREATE EXTENSION IF NOT EXISTS postgis;
 Then update backend/.env if your password/host differs.
+=======
+# Geodptical-Corbon-biodiversity
+ This is main and big project
+>>>>>>> bb8779039be87cab48589515bff287bfcba7b69e
