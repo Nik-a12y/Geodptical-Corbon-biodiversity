@@ -85,9 +85,24 @@ if USING_POSTGRES:
         connection.execute(text("ALTER TABLE sites ADD COLUMN IF NOT EXISTS geometry geometry(POLYGON, 4326)"))
 
 app = FastAPI(title="Darukaa.Earth API", version="1.0")
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+#deplyee k bad ka c ode
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        origin.strip()
+        for origin in os.getenv(
+            "CORS_ORIGINS",
+            "http://localhost:5173,http://127.0.0.1:5173"
+        ).split(",")
+        if origin.strip()
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
